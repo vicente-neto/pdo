@@ -1,2 +1,5 @@
 {
+    "require": {
+        "ext-pdo_sqlite": "^8.0"
+    }
 }
