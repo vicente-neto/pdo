@@ -2,7 +2,9 @@
 
 namespace Vicente\Pdo\Model;
 
-class Student
+use JsonSerializable;
+
+class Student implements JsonSerializable
 {
     private ?int $id;
     private string $name;
@@ -21,5 +23,10 @@ class Student
     public function getName(): string
     {
         return $this->name;
+    }
+
+    public function jsonSerialize()
+    {
+        return ["id"=>$this->id,"name"=>$this->name];
     }
 }

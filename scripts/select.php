@@ -14,7 +14,7 @@ $statement = $pdo->query('SELECT * FROM students;');
 
 $students = [];
 foreach($statement->fetchAll() as $studentDB){
-    $students[] = new Student(null,$studentDB["name"]);
+    $students[] = new Student($studentDB["id"],$studentDB["name"]);
 }
 /*
 $students = [];
