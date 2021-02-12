@@ -1,7 +1,7 @@
 <?php
 namespace Vicente\Pdo\Scripts;
 
-use Vicente\Pdo\Model\Student;
+use Vicente\Pdo\Model\StudentWithJson as Student;
 use PDO;
 
 class Select
