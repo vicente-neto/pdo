@@ -2,9 +2,10 @@
 
 namespace Vicente\Pdo\Model;
 
+use JetBrains\PhpStorm\ArrayShape;
 use JsonSerializable;
 
-class Student
+class StudentWithJson implements JsonSerializable
 {
     private ?int $id;
     private string $name;
@@ -25,4 +26,8 @@ class Student
         return $this->name;
     }
 
+    public function jsonSerialize(): array
+    {
+        return ["id"=>$this->getId(),"name"=>$this->getName()];
+    }
 }
