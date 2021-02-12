@@ -30,7 +30,7 @@ class Select
 
         header('Content-Type: application/json');
         $result = json_encode($students);
-        echo $result;
+        echo "Oi";
     }
 }
 
