@@ -3,6 +3,6 @@
         "ext-pdo_sqlite": "^8.0"
     },
     "autoload": {
-        "psr-4": {"Vicente\\Pdo\\": "src/"}
+        "psr-4": {"Vicente\\Pdo\\": "src\\"}
     }
 }
