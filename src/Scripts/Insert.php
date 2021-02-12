@@ -1,5 +1,5 @@
 <?php
-
+namespace Vicente\Pdo\Scripts;
 use Vicente\Pdo\Model\Student;
 use Vicente\Pdo\Infra\Persistence\ConnectionCreator;
 
