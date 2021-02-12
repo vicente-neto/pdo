@@ -24,3 +24,4 @@ while($student = $statement->fetch()){
 */
 
 var_dump($students);
+var_dump($students);
