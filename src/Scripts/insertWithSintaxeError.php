@@ -10,7 +10,7 @@ $connection = ConnectionCreator::createConnection();
 
 $student = new Student(
     null,
-    "Carol'"); //); DROP TABLE professores; --
+    "Carol'");
 
 $statement = "INSERT INTO students (name) VALUES ('{$student->getName()}');";
 var_dump($connection->exec($statement));

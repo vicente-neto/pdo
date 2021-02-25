@@ -2,8 +2,6 @@
 
 namespace Vicente\Pdo\Model;
 
-use JsonSerializable;
-
 class Student
 {
     private ?int $id;
@@ -23,6 +21,22 @@ class Student
     public function getName(): string
     {
         return $this->name;
+    }
+
+    /**
+     * @param int|null $id
+     */
+    public function setId(?int $id): void
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName(string $name): void
+    {
+        $this->name = $name;
     }
 
 }
