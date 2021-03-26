@@ -1,11 +1,13 @@
 <?php
 
-namespace Vicente\Pdo\Controller;
+namespace Vicente\Pdo\Controller\Steps;
 
+use Vicente\Pdo\Controller\IController;
 use Vicente\Pdo\Infra\Persistence\ConnectionCreator;
 use Vicente\Pdo\Infra\Repository\PdoStudentRepository;
+use Vicente\Pdo\Model\Student;
 
-class StudentList extends Controller
+class PersistenceStudent2 implements IController
 {
     private $studentRepository;
 
@@ -15,11 +17,12 @@ class StudentList extends Controller
         $this->studentRepository = new PdoStudentRepository($connection);
     }
 
-
     public function index():void
     {
-        $title = "Estudantes";
-        $students = $this->studentRepository->allStudents();
-        require __DIR__ . '/../../view/students/list.php';
+        $name = $_POST['name'];
+        $student = new Student(null,$name);
+        $this->studentRepository->save($student);
+        header('Location: /listar-estudantes', false, 302);
     }
+
 }

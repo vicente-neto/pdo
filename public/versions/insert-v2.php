@@ -1,5 +1,5 @@
 <?php
-
+//Entrada com erro não intencional do usuário
 use Vicente\Pdo\Model\Student;
 use Vicente\Pdo\Infra\Persistence\ConnectionCreator;
 
@@ -10,7 +10,7 @@ $connection = ConnectionCreator::createConnection();
 
 $student = new Student(
     null,
-    "Carol'); DROP TABLE professores; --");
+    "Carol'");
 
 $statement = "INSERT INTO students (name) VALUES ('{$student->getName()}');";
 var_dump($connection->exec($statement));

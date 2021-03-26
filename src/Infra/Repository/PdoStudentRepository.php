@@ -33,11 +33,27 @@ class PdoStudentRepository implements StudentRepository
         return $studentList;
     }
 
+    public function find($id): Student
+    {
+        $sql = 'SELECT * FROM students WHERE id = :id;';
+        $statement = $this->connection->prepare($sql);
+        $statement->execute(
+            [
+                ':id' => $id
+            ]
+        );
+        $studentData = $statement->fetch();
+        return new Student(
+            $studentData['id'],
+            $studentData['name']
+        );
+    }
+
 
 
     public function save(Student $student): bool
     {
-        if ($student->id() === null) {
+        if ($student->getId() === null) {
             return $this->insert($student);
         }
         return $this->update($student);
@@ -50,7 +66,7 @@ class PdoStudentRepository implements StudentRepository
 
         $success = $statement->execute(
             [
-                ':name' => $student->name()
+                ':name' => $student->getName()
             ]
         );
 
@@ -63,8 +79,8 @@ class PdoStudentRepository implements StudentRepository
     {
         $query = 'UPDATE students SET name = :name WHERE id = :id;';
         $statement = $this->connection->prepare($query);
-        $statement->bindValue(':name', $student->name());
-        $statement->bindValue(':id', $student->id(), PDO::PARAM_INT);
+        $statement->bindValue(':name', $student->getName());
+        $statement->bindValue(':id', $student->getId(), PDO::PARAM_INT);
 
         return $statement->execute();
     }

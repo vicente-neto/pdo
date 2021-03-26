@@ -1,5 +1,5 @@
 <?php
-
+//insert com prepare usando ?
 use Vicente\Pdo\Model\Student;
 use Vicente\Pdo\Infra\Persistence\ConnectionCreator;
 
@@ -10,7 +10,9 @@ $connection = ConnectionCreator::createConnection();
 
 $student = new Student(
     null,
-    "Carol'");
+    "Dani");
 
-$statement = "INSERT INTO students (name) VALUES ('{$student->getName()}');";
-var_dump($connection->exec($statement));
+$statement = "INSERT INTO students (name) VALUES (?);";
+$statement = $connection->prepare($statement);
+$statement->bindValue(1,$student->getName());
+$statement->execute();

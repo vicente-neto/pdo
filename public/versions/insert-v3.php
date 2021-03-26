@@ -1,15 +1,15 @@
 <?php
-
+//Ataque SQL Injection
 use Vicente\Pdo\Model\Student;
+use Vicente\Pdo\Infra\Persistence\ConnectionCreator;
 
 require_once 'vendor/autoload.php';
 
-$databasePath = __DIR__ . "\..\..\database.sqlite";
-$connection = new PDO("sqlite:".$databasePath);
+$connection = ConnectionCreator::createConnection();
 
 $student = new Student(
     null,
-    "Ana");
+    "Carol'); DROP TABLE professores; --");
 
 $statement = "INSERT INTO students (name) VALUES ('{$student->getName()}');";
 var_dump($connection->exec($statement));

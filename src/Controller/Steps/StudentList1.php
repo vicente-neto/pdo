@@ -1,25 +1,19 @@
 <?php
 
-namespace Vicente\Pdo\Controller;
+namespace Vicente\Pdo\Controller\Steps;
 
 use Vicente\Pdo\Infra\Persistence\ConnectionCreator;
 use Vicente\Pdo\Infra\Repository\PdoStudentRepository;
 
-class StudentList extends Controller
+class StudentList1
 {
     private $studentRepository;
 
-    public function __construct()
+    public function process():void
     {
         $connection = ConnectionCreator::createConnection();
         $this->studentRepository = new PdoStudentRepository($connection);
-    }
-
-
-    public function index():void
-    {
-        $title = "Estudantes";
         $students = $this->studentRepository->allStudents();
-        require __DIR__ . '/../../view/students/list.php';
+        var_dump($students);
     }
 }

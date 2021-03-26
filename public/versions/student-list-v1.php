@@ -1,17 +1,15 @@
 <?php
-require_once 'vendor/autoload.php';
-
-use Vicente\Pdo\Infra\Repository\PdoStudentRepository;
-use Vicente\Pdo\Infra\Persistence\ConnectionCreator;
-$connection = ConnectionCreator::createConnectionProducao();
-$repository = new PdoStudentRepository($connection);
-$students = $repository->allStudents();
+    require_once 'vendor/autoload.php';
+    use Vicente\Pdo\Infra\Repository\PdoStudentRepository;
+    use Vicente\Pdo\Infra\Persistence\ConnectionCreator;
+    $connection = ConnectionCreator::createConnectionProducao();
+    $repository = new PdoStudentRepository($connection);
+    $students = $repository->allStudents();
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Bootstrap Example</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -21,7 +19,7 @@ $students = $repository->allStudents();
         <div class="container">
             <h1 class="display-1 text-center">Estudantes</h1>
             <div class="py-2 d-flex justify-content-end">
-                <a href="adicionar-estudante-form.php" type="button" class="btn btn-primary">Novo</a>
+                <a href="student-form-v1.php" type="button" class="btn btn-primary">Novo</a>
             </div>
             <ul class="list-group">
                 <?php foreach ($students as $student): ?>
